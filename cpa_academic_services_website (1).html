@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paul John Alvarez, CPA | Rise CPA Academic Services</title>
+  <style>
+    :root {
+      --bg-1: #040814;
+      --bg-2: #081124;
+      --bg-3: #0d1630;
+      --card: rgba(255, 255, 255, 0.08);
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #f5f7ff;
+      --muted: #c8d2ef;
+      --accent: #cfe1ff;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --radius-xl: 28px;
+      --radius-lg: 22px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 18% 18%, rgba(127,176,255,0.18), transparent 22%),
+        radial-gradient(circle at 82% 24%, rgba(198,156,255,0.16), transparent 20%),
+        radial-gradient(circle at 50% 82%, rgba(255,255,255,0.06), transparent 18%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 50%, var(--bg-3) 100%);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(2px 2px at 40px 60px, rgba(255,255,255,0.88), transparent),
+        radial-gradient(1.5px 1.5px at 180px 120px, rgba(255,255,255,0.72), transparent),
+        radial-gradient(2px 2px at 360px 40px, rgba(255,255,255,0.84), transparent),
+        radial-gradient(1.5px 1.5px at 540px 180px, rgba(255,255,255,0.72), transparent),
+        radial-gradient(2px 2px at 760px 80px, rgba(255,255,255,0.84), transparent),
+        radial-gradient(1.5px 1.5px at 960px 160px, rgba(255,255,255,0.72), transparent),
+        radial-gradient(2px 2px at 1140px 100px, rgba(255,255,255,0.88), transparent);
+      background-size: 1200px 260px;
+      animation: driftStars 90s linear infinite;
+      opacity: 0.55;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    @keyframes driftStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(260px); }
+    }
+
+    .container {
+      width: min(var(--max), 92%);
+      margin: 0 auto;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(4, 8, 20, 0.68);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+    }
+
+    .brand {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(90deg, rgba(4,8,20,0.76), rgba(4,8,20,0.44)),
+        url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHBwgHBgoICAkLCgkLDhgQDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCwsLDw4PHRERHTIpIik3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAWgE1QMBIgACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAABQYDBAcCAf/EAEAQAAIBAgQDBgQEBQQDAQAAAAECAAMRBBIhMQVBUQYTImFxgZEHFDKBkaGxI0JSscHR4fAzQ1OS8VOT/8QAGAEBAQEBAQAAAAAAAAAAAAAAAAECAwT/xAAiEQEBAQEAAgIDAQAAAAAAAAAAAQIREiExA0ETIlEUQWH/2gAMAwEAAhEDEQA/APdAooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooor5f8A+ItZ/wCQfN/6h8v/AErX3JRXy/8A8Raz/wAg+b/1D5f+laz4/8R2qz4I+L9P8A0PxD/wBS1+t9H8P/ABHazf8AAj4v0/8AQ/EP/UtfrfR/D/xHarP+BHxfr/0PxD/1LX630fw/8R2qz/gR8X6/9D8Q/wDUtfrfR/D/AMR2qz/gR8X6/wDQ/EP/AFLX630fw/8AEdqs/wCBHxfr/wBD8Q/9S1+t9H8P/Edqs/4EfF+v/Q/EP/UtfrfR/D/xHarP+BHxfr/0PxD/1LX630fw/wDEdqs/4EfF+v8A0PxD/wBS1+t9H8P/ABHarP8AgR8X6/8AQ/EP/UtfrfR/D/xHarP+BHxfr/0PxD/1LX630fw/8R2qz/gR8X6/9D8Q/wDUtfrfR/D/AMR2qz/gR8X6/wDQ/EP/AFLX630fw/8AEdqs/wCBHxfr/wBD8Q/9S1+t9H8P/Edqs/4EfF+v/Q/EP/UtfrfR/D/xHarP+BHxfr/0PxD/1LX630fw/wDEdqs/4EfF+v8A0PxD/wBS1+t9H8P/ABHarP8AgR8X6/8AQ/EP/UtfrfR/D/xHarP+BHxfr/0PxD/1LX630fw/8R2qz/gR8X6/9D8Q/wDUtfrfR/D/AMR2qz/gR8X6/wDQ/EP/AFLX630fw/8AEdqs/wCBHxfr/wBD8Q/9S1+t9H8P/Edqs/4EfF+v/Q/EP/UtfrfR/D/xHarP+BHxfr/0PxD/1LX630fw/wDEdqs/4EfF+v8A0PxD/wBS1+t9H8P/ABHarP8AgR8X6/8AQ/EP/UtfrfR/D/xHarP+BHxfr/0PxD/1LX630fw/8R2qz/gR8X6/9D8Q/wDUtfpfQfD/AER2q3/gf8Xaf9D8P/Utfq/2f4jttv7D8QaeH8h8Qf+pa/W+s+H/iO1W/8Cfi7T/ofaH/qWv1vrPh/4jtVv/AHj8Xaf9D7Q/9S1+t9Z8P/Edqt/4E/F2n/Q+0P8A1LX631nw/wDEdqt/4E/F2n/Q+0P/AFLX631nw/8AEdqt/wCBPxdp/wBD7Q/9S1+t9Z8P/Edqt/4E/F2n/Q+0P/Utfq+H/wCI7Tb+xPEEnh7IfEH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H/iO1W/8AA34u0/6H2h/6lr9b6z4f+I7Vb/wN+LtP+h9of+pa/W+s+H/iO1W/8Cfi7T/ofaH/AKlr9b6z4f8AiO1W/wDA34u0/wCh9of+pa/W+s+H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');
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.05) contrast(1.02);
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(4,8,20,0.20), rgba(4,8,20,0.78));
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 26px;
+      align-items: center;
+      padding: 68px 0 46px;
+    }
+
+    .hero-copy,
+    .hero-side,
+    .card,
+    .contact-box {
+      border-radius: var(--radius-xl);
+    }
+
+    .hero-copy,
+    .hero-side {
+      padding: 32px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(127,176,255,0.14);
+      border: 1px solid rgba(127,176,255,0.24);
+      color: #dce8ff;
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(2.35rem, 5vw, 4.5rem);
+      line-height: 1.03;
+      letter-spacing: -1.4px;
+      margin: 0 0 18px;
+    }
+
+    .lead {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 700px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #a7c5ff);
+      color: #071122;
+      box-shadow: 0 12px 28px rgba(127,176,255,0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(127,176,255,0.34);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.14);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.10);
+      transform: translateY(-2px);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 16px;
+    }
+
+    .stat-box {
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 6px;
+    }
+
+    section {
+      padding: 86px 0;
+      position: relative;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 28px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.9rem, 3vw, 3rem);
+      letter-spacing: -0.8px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .card { padding: 28px; }
+    .card h3 { margin-top: 0; margin-bottom: 12px; font-size: 1.16rem; }
+    .card p, .card li { color: var(--muted); }
+
+    .grid { display: grid; gap: 22px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    ul { margin: 0; padding-left: 20px; }
+
+    .service-list { display: grid; gap: 14px; }
+
+    .service-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .service-number {
+      width: 38px;
+      height: 38px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      font-weight: 700;
+      background: linear-gradient(135deg, rgba(127,176,255,0.22), rgba(198,156,255,0.22));
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: #e8efff;
+      font-size: 0.82rem;
+    }
+
+    .proof-box {
+      min-height: 290px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.05));
+      border: 1px dashed rgba(255,255,255,0.16);
+    }
+
+    .upload-placeholder {
+      margin-top: 16px;
+      min-height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1.5px dashed rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.03);
+      color: #e7eeff;
+    }
+
+    .upload-placeholder small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .proof-grid-large {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .proof-wide { min-height: 360px; }
+
+    .link-list { display: grid; gap: 12px; margin-top: 18px; }
+
+    .link-item {
+      display: block;
+      padding: 14px 16px;
+      border-radius: 16px;
+      text-decoration: none;
+      color: #eef3ff;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .link-item:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.09);
+    }
+
+    .link-item span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    details.policy-toggle {
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+    }
+
+    details.policy-toggle summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 16px 18px;
+      font-weight: 700;
+      color: #eef3ff;
+      user-select: none;
+    }
+
+    details.policy-toggle summary::-webkit-details-marker { display: none; }
+    details.policy-toggle summary::after {
+      content: "+";
+      float: right;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+    details.policy-toggle[open] summary::after { content: "–"; }
+
+    .policy-full {
+      padding: 0 18px 18px;
+      color: var(--muted);
+    }
+
+    .policy-full p:last-child { margin-bottom: 0; }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .contact-box { padding: 30px; }
+    .contact-list p { margin: 0 0 12px; color: var(--muted); }
+    .mini-note { color: var(--muted); font-size: 0.95rem; }
+
+    footer {
+      text-align: center;
+      color: #afbadb;
+      padding: 30px 0 40px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.15);
+    }
+
+    @media (max-width: 980px) {
+      .hero-content,
+      .grid-3,
+      .grid-2,
+      .proof-grid-large,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+      .hero { min-height: auto; }
+    }
+
+    @media (max-width: 700px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .cta-row { flex-direction: column; }
+      .btn { width: 100%; }
+      .hero-copy,
+      .hero-side,
+      .card,
+      .contact-box { padding: 22px; }
+      section { padding: 72px 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <a href="#top" class="brand">Paul John Alvarez, CPA | Rise CPA Academic Services</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#credentials">Credentials</a>
+        <a href="#services">Services</a>
+        <a href="#proofs">Proofs</a>
+        <a href="#legitimacy">Legitimacy</a>
+        <a href="#policy">Policy</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="container hero-content">
+      <div class="hero-copy glass">
+        <span class="eyebrow">CPA • Accounting Commissions • Academic Services</span>
+        <h1>Paul John Alvarez, CPA — Rise CPA Academic Services</h1>
+        <p class="lead">
+          Providing professional academic support in accounting, finance, feasibility studies, business plans, and research-related outputs, with a focus on clarity, structure, and defensibility.
+        </p>
+        <p class="lead">
+          Trusted by students for organized outputs, accurate computations, and guidance tailored for academic success.
+        </p>
+        <div class="cta-row">
+          <a href="#contact" class="btn btn-primary">Inquire Now</a>
+          <a href="#proofs" class="btn btn-secondary">View Proofs</a>
+        </div>
+      </div>
+
+      <div class="hero-side glass">
+        <div class="stat-box">
+          <strong>May 2025 CPALE Passer</strong>
+          <span>Professional credibility backed by current licensure success.</span>
+        </div>
+        <div class="stat-box">
+          <strong>Academic Commissioner</strong>
+          <span>Providing academic commissions and support since 2023.</span>
+        </div>
+        <div class="stat-box">
+          <strong>Rise Academic Services</strong>
+          <span>Built for students who need clear, structured, and dependable outputs.</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>About Me</h2>
+        <p>Professional background, education, and academic focus.</p>
+      </div>
+      <div class="card glass">
+        <p>
+          I am Paul John Alvarez, a Certified Public Accountant and graduate of Ateneo de Davao University with a degree in Accountancy in 2024. I have been a consistent honor student, received Best in Research in 2024, and have been serving as an academic commissioner since 2023.
+        </p>
+        <p>
+          I currently work with R.B. Alvarez Accounting Office and provide academic support services for accounting, finance, feasibility studies, business plans, thesis and research outputs, and related student requirements. My approach focuses on clarity, accuracy, strong structure, and outputs that students can confidently present and defend.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="container">
+      <div class="section-head">
+        <h2>Credentials</h2>
+        <p>Professional background, academic foundation, and areas of support.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card glass">
+          <h3>Professional Background</h3>
+          <ul>
+            <li>Certified Public Accountant (CPA)</li>
+            <li>R.B. Alvarez Accounting Office (2024 – Present)</li>
+            <li>Academic Commissioner since 2023</li>
+          </ul>
+        </div>
+        <div class="card glass">
+          <h3>Academic Support Areas</h3>
+          <ul>
+            <li>All Accounting Subjects and Concepts</li>
+            <li>Feasibility Study – All Financial Aspects</li>
+            <li>Financial Statements (Complete Set)</li>
+            <li>Research, Thesis, and Business Plans</li>
+          </ul>
+        </div>
+        <div class="card glass">
+          <h3>Academic Edge</h3>
+          <ul>
+            <li>Consistent honor student background</li>
+            <li>Best in Research (2024)</li>
+            <li>Strong academic and technical foundation</li>
+            <li>Structured, defensible, and high-quality outputs</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>Services</h2>
+        <p>Core academic services and accounting-related support offered through Rise CPA Academic Services.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card glass">
+          <div class="service-list">
+            <div class="service-item">
+              <div class="service-number">01</div>
+              <div>
+                <h3>Feasibility Study Financial Aspect</h3>
+                <p>Complete support for assumptions, projections, statements, costing, and analysis used in feasibility studies.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <div class="service-number">02</div>
+              <div>
+                <h3>Business Plan Financials</h3>
+                <p>Preparation of financial sections and supporting computations for business plans and startup proposals.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <div class="service-number">03</div>
+              <div>
+                <h3>Accounting Subjects and Concepts</h3>
+                <p>Academic support across accounting topics, concepts, computations, schedules, and problem solving.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass">
+          <div class="service-list">
+            <div class="service-item">
+              <div class="service-number">04</div>
+              <div>
+                <h3>Financial Statements and Analysis</h3>
+                <p>Trial Balance, Statement of Financial Position, Statement of Financial Performance, Cash Flows, Equity Changes, Notes to FS, and ratio analysis.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <div class="service-number">05</div>
+              <div>
+                <h3>Research, Thesis, and Business Requirements</h3>
+                <p>Support for thesis, research, business plans, academic revisions, reviews, critiques, and guidance for defense.</p>
+              </div>
+            </div>
+            <div class="service-item">
+              <div class="service-number">06</div>
+              <div>
+                <h3>Other Related Services</h3>
+                <p>Startup cost and capitalization, payback period, capital budgeting, economics aspects, essays, humanized texts, and more.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="proofs">
+    <div class="container">
+      <div class="section-head">
+        <h2>Proofs</h2>
+        <p>Replace these placeholders with real screenshots, testimonials, blurred outputs, and approval highlights.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card glass proof-box">
+          <div>
+            <span class="tag">Client Feedback</span>
+            <h3>Testimonials</h3>
+            <p>Add screenshots of student messages, feedback, and positive reviews here.</p>
+          </div>
+          <div class="upload-placeholder">
+            <div>
+              Upload testimonial screenshot here
+              <small>Crop names or sensitive details if needed before uploading.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass proof-box">
+          <div>
+            <span class="tag">Sample Outputs</span>
+            <h3>Finished Work Samples</h3>
+            <p>Add blurred previews or safe excerpts of completed accounting, feasibility, or research outputs.</p>
+          </div>
+          <div class="upload-placeholder">
+            <div>
+              Upload sample output preview here
+              <small>Blur names, school details, or private client data before posting.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass proof-box">
+          <div>
+            <span class="tag">Academic Results</span>
+            <h3>Project Highlights</h3>
+            <p>Add approved studies, successful submissions, or notable student results here.</p>
+          </div>
+          <div class="upload-placeholder">
+            <div>
+              Upload approval or result proof here
+              <small>Add a short caption explaining what the proof shows.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="legitimacy">
+    <div class="container">
+      <div class="section-head">
+        <h2>Proofs & Legitimacy</h2>
+        <p>Use this section for verification materials and direct links to your official contact pages.</p>
+      </div>
+
+      <div class="proof-grid-large">
+        <div class="card glass proof-box proof-wide">
+          <div>
+            <span class="tag">Legitimacy Files</span>
+            <h3>Credentials and Verification Uploads</h3>
+            <p>Use this area for your CPA proof, certificates, poster, branded materials, or IDs with sensitive details hidden.</p>
+          </div>
+          <div class="upload-placeholder">
+            <div>
+              Upload legitimacy proof here
+              <small>Examples: CPA credential proof, certificate screenshot, ID preview, or service banner.</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass proof-box proof-wide">
+          <div>
+            <span class="tag">External Links</span>
+            <h3>Important Links</h3>
+            <p>Add your official pages below so visitors can verify and contact you more easily.</p>
+          </div>
+          <div class="link-list">
+            <a href="https://www.facebook.com/mountalvarez" class="link-item">Facebook Page<span>Official Facebook profile or page for inquiries and verification.</span></a>
+            <a href="#" class="link-item">Portfolio / Drive Folder<span>Replace this with your Google Drive, portfolio, or file repository link.</span></a>
+            <a href="#" class="link-item">Messenger / Contact Link<span>Replace this with your preferred direct inquiry link.</span></a>
+            <a href="#" class="link-item">Additional Verification Link<span>Replace this with another proof page, review page, or platform link.</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="policy">
+    <div class="container">
+      <div class="section-head">
+        <h2>Policies & Terms</h2>
+        <p>Please read the following policies carefully before availing any service.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card glass">
+          <h3>Revision Policy</h3>
+          <p>
+            Revisions resulting from changes outside the originally agreed template, data, scope, or instructions may be subject to additional fees. This policy is intended to maintain efficiency, ensure fairness, and encourage consolidated revision requests.
+          </p>
+          <details class="policy-toggle">
+            <summary>View full revision policy</summary>
+            <div class="policy-full">
+              <p>I would like to clarify that revisions resulting from changes outside the originally agreed template, data, or scope may be subject to additional fees. This policy is in place to ensure efficiency and to encourage consolidated revision requests, as frequent incremental changes significantly affect time allocation and project workflow.</p>
+              <p>Please note that revisions beyond the agreed template, scope, or original instructions — particularly those arising from new additions or changes not attributable to my work — will be billed separately. This policy helps maintain structured workflows and ensures that revision requests are consolidated and minimized.</p>
+              <p>For transparency, revisions that fall outside the originally provided template or agreed scope, especially those introduced after submission, will require additional fees. This approach ensures fair compensation for additional work and encourages efficient, consolidated revision requests.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="card glass">
+          <h3>Rush Service Policy</h3>
+          <p>
+            Projects requiring expedited turnaround may be classified under specific rush categories and will be subject to corresponding rush fees, depending on the level of urgency.
+          </p>
+          <details class="policy-toggle">
+            <summary>View full rush service policy</summary>
+            <div class="policy-full">
+              <p>To accommodate urgent requests, projects may be classified under the following rush categories based on the required turnaround time:</p>
+              <ul>
+                <li>Extremely Rush – Less than 8 hours</li>
+                <li>Very Rush – Less than 24 hours</li>
+                <li>Rush – Less than 2 days</li>
+                <li>Slightly Rush – Less than 3 days</li>
+                <li>Very Slightly Rush – Less than 5 days</li>
+              </ul>
+              <p>Requests that fall within these timeframes will be subject to corresponding rush fees. The applicable fee will vary depending on the urgency category and will be communicated prior to engagement.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="card glass">
+          <h3>Payment & Release Policy</h3>
+        <p>
+          All deliverables, files, and outputs shall remain withheld until full payment has been completed. This policy is strictly enforced to prevent unresolved balances and ensure professional accountability.
+        </p>
+      </div>
+
+      <div class="card glass">
+        <h3>Cancellation Policy</h3>
+        <p>
+          In the event of cancellation after engagement has commenced, a cancellation fee equivalent to <strong>50% to 90%</strong> of the total agreed project price shall apply. The exact percentage will depend on the extent of work already completed by me or my team at the time of cancellation.
+        </p>
+        <p>
+          This policy ensures fair compensation for time, effort, and resources already allocated to the project. Any work completed up to the point of cancellation will be considered billable and non-refundable.
+        </p>
+      </div>
+          </details>
+        </div>
+
+        <div class="card glass">
+          <h3>Financial Projection Disclaimer</h3>
+          <p>
+            Financial projections are prepared for academic, planning, and analytical purposes only. They are based on assumptions and estimates, and actual results may differ materially.
+          </p>
+          <details class="policy-toggle">
+            <summary>View full financial projection disclaimer</summary>
+            <div class="policy-full">
+              <p>This financial projection is designed to assist students in evaluating various assumptions and illustrating the relationships among key financial components of a business case or feasibility study through a set of basic financial statements. The inputs and assumptions used in the financial projection should be consistent with the details presented in the corresponding Business Plan or Feasibility Study.</p>
+              <p>The financial projection provides estimated financial outcomes and is not intended to be entirely accurate in predicting actual results. While calculations are mathematically sound, greater emphasis is placed on the reasonableness of assumptions and the ability of proponents to justify and defend them.</p>
+              <p>This financial projection is not meant to satisfy the requirements of a financial accounting course, nor does it aim to present information in accordance with Generally Accepted Accounting Principles (GAAP) or standard financial reporting rules. Instead, certain figures are based on commonly accepted relationships rather than strict accounting formulas, making it more suitable for practical analysis and decision-making in a business planning context.</p>
+              <p>As a Certified Public Accountant acting in the capacity of a consultant/commissioner, it is hereby emphasized that this financial projection is prepared solely for academic, planning, and analytical purposes. The figures presented are based on management-provided assumptions and estimates, which are inherently subject to uncertainty and may not reflect actual future results.</p>
+              <p>This financial projection does not constitute an audit, review, or assurance engagement in accordance with Philippine Standards on Auditing (PSA) or other applicable professional standards. Accordingly, no opinion or assurance is expressed on the accuracy, completeness, or reliability of the financial information presented.</p>
+              <p>Users of this report should be aware that financial projections are not guarantees of performance. Variances between projected and actual results are expected and may be material due to changes in economic conditions, market behavior, operational factors, and other unforeseen circumstances beyond the control of the proponents.</p>
+              <p>Furthermore, this financial projection does not fully adhere to Philippine Financial Reporting Standards (PFRS) or Generally Accepted Accounting Principles (GAAP) in terms of presentation and disclosure, as it is intended primarily for feasibility analysis rather than statutory reporting.</p>
+              <p>Common misconceptions to be avoided include the assumption that the projections represent exact future financial outcomes, imply assurance or certification of profitability, can be used as a substitute for audited financial statements, or guarantee business success or investment returns.</p>
+              <p>This report should be interpreted in conjunction with the underlying assumptions, and users are advised to exercise sound judgment and due diligence in relying on the information presented.</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="card glass">
+          <h3>Additional Notes & Guidance</h3>
+          <p>
+            All accompanying write-ups and materials are provided for guidance only and should still be reviewed, adjusted, and aligned with the user’s specific study, format, and institutional requirements.
+          </p>
+          <details class="policy-toggle">
+            <summary>View full notes and guidance</summary>
+            <div class="policy-full">
+              <p>Please note that the accompanying write-ups are provided solely for guidance purposes. Users are strongly encouraged to review, modify, and tailor the content to align with their specific study, required format, and institutional guidelines.</p>
+              <p>The materials provided represent a comprehensive compilation of financial data, assumptions, and analyses based on various requirements previously encountered. As such, certain components may not be directly applicable to your particular case or may not conform to your school’s prescribed format. In such instances, users are advised to exercise discretion by selecting only the relevant information and disregarding any data that is not required.</p>
+              <p>Users should also be mindful that different terminologies may be used interchangeably. For example, “Income Statement” may be referred to as “Statement of Financial Performance” within the financials. It is expected that users exercise due diligence in understanding these terms, including conducting independent research where necessary, rather than assuming omissions.</p>
+              <p>It is further emphasized that formats will naturally vary across institutions, advisers, and prior works. While the structure may differ, the underlying concepts and financial relationships remain consistent. Replication of a specific format cannot be guaranteed without access to the exact reference file or template.</p>
+              <p>For technical navigation within the financial file, users may utilize Excel functions such as “Ctrl + [” to trace cell references and better understand the flow of computations. Hidden sheets are intentionally kept concealed as they may not be necessary for all users; thus, it is advised not to unhide them unless absolutely required.</p>
+              <p>Users are also e
